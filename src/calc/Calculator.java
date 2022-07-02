@@ -8,7 +8,7 @@ public class Calculator {
     static int a, b;
     static char op;
     static int result;
-    static String input;
+    static String input = "VIII + 5";
     private static String convertRoman (int num) {
         String[] roman = {"O", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII",
                     "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX", "XXI", "XXII", "XXIII",
@@ -48,7 +48,7 @@ public class Calculator {
                     return 10;
             }
         } catch (InputMismatchException e) {
-            throw new InputMismatchException("Не корректный ввод данных");
+            throw new InputMismatchException("Не корректный ввод данных!");
         }
         return -1;
     }
@@ -82,7 +82,7 @@ public class Calculator {
         String[] strSplit = input.split("[+-/*]");
         a = romNum(strSplit[0]);
         b = romNum(strSplit[1].trim());
-        if (a < 0 && b < 0) {
+        if (a < 0 & b < 0) {
             result = 0;
         } else {
             result = math(a, b, op);
@@ -90,7 +90,7 @@ public class Calculator {
                 try {
                     throw new Exception();
                 } catch (Exception e) {
-                    return "*** В римской системе нет отрицательных чисел";
+                    return "*** В римской системе нет отрицательных чисел!";
                 }
             }
             return convertRoman(result);
@@ -99,7 +99,10 @@ public class Calculator {
             a = Integer.parseInt(strSplit[0]);
             b = Integer.parseInt(strSplit[1].trim());
         } catch (NumberFormatException e) {
-            return "_Не корректный ввод данных";
+            return "_Не корректный ввод данных!";
+        }
+        if (a < 0 | a > 10 | b < 0 | b > 10) {
+            return "__Не корректный ввод данных!";
         }
         return Integer.toString(math(a, b, op));
     }
