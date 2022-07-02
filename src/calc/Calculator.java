@@ -8,7 +8,7 @@ public class Calculator {
     static int a, b;
     static char op;
     static int result;
-    static String input = "VIII + 5";
+    static String input;
     private static String convertRoman (int num) {
         String[] roman = {"O", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII",
                     "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX", "XXI", "XXII", "XXIII",
@@ -90,8 +90,11 @@ public class Calculator {
                 try {
                     throw new Exception();
                 } catch (Exception e) {
-                    return "*** В римской системе нет отрицательных чисел!";
+                    return "В римской системе нет отрицательных чисел!";
                 }
+            }
+            if (a < 0 || b < 0) {
+                return "Используются одновременно разные системы счисления!";
             }
             return convertRoman(result);
         }
@@ -99,10 +102,10 @@ public class Calculator {
             a = Integer.parseInt(strSplit[0]);
             b = Integer.parseInt(strSplit[1].trim());
         } catch (NumberFormatException e) {
-            return "_Не корректный ввод данных!";
+            return "Не корректный ввод данных!";
         }
         if (a < 0 | a > 10 | b < 0 | b > 10) {
-            return "__Не корректный ввод данных!";
+            return "Не корректный ввод данных!";
         }
         return Integer.toString(math(a, b, op));
     }
