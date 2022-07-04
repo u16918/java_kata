@@ -79,6 +79,9 @@ public class Calculator {
     }
     public static String calc() {
         stringProcessing();
+        if (input.length() < 3) {
+            return "Не является математической операцией!";
+        }
         int replaceAll = input.replaceAll("\\d|[a-zA-Z]", "").length();
         if (replaceAll > 1) {
             System.out.println("Введено больше одного операнда!");
