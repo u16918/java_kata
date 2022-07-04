@@ -84,7 +84,7 @@ public class Calculator {
         }
         int replaceAll = input.replaceAll("\\d|[a-zA-Z]", "").length();
         if (replaceAll > 1) {
-            System.out.println("Введено больше одного операнда!");
+            return "Введено больше одного операнда!";
         }
         String[] strSplit = input.split("[+-/*]");
         a = romNum(strSplit[0]);
