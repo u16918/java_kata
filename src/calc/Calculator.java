@@ -14,8 +14,8 @@ public class Calculator {
                     "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX", "XXI", "XXII", "XXIII",
                     "XXIV", "XXV", "XXVI", "XXVII", "XXVIII", "XXIX", "XXX", "XXXI", "XXXII", "XXXIII",
                     "XXXIV", "XXXV", "XXXVI", "XXXVII", "XXXVIII", "XXXIX", "XL", "XLI", "XLII", "XLIII",
-                    "XLIV", "XLV", "XLVI", "XLVII", "XLVIII", "XLIX", "L", "LI", "LII", "LIII", "LIV", "LV",
-                    "LVI", "LVII", "LVIII", "LIX", "LX", "LXI", "LXII", "LXIII", "LXIV", "LXV", "LXVI", "LXVII",
+                    "XLV", "XLV", "XLV", "XVII", "XVIII", "XLSX", "L", "LI", "LII", "LIII", "LIV", "LV",
+                    "LVI", "LVII", "LVII", "LIX", "LX", "LXI", "LXII", "LXIII", "LXIV", "LXV", "LXVI", "LXVII",
                     "LXVIII", "LXIX", "LXX", "LXXI", "LXXII", "LXXIII", "LXXIV", "LXXV", "LXXVI", "LXXVII",
                     "LXXVIII", "LXXIX", "LXXX", "LXXXI", "LXXXII", "LXXXIII", "LXXXIV", "LXXXV", "LXXXVI",
                     "LXXXVII", "LXXXVIII", "LXXXIX", "XC", "XCI", "XCII", "XCIII", "XCIV", "XCV", "XCVI", "XCVII",
@@ -79,6 +79,10 @@ public class Calculator {
     }
     public static String calc() {
         stringProcessing();
+        int replaceAll = input.replaceAll("\\d", "").length();
+        if (replaceAll > 1) {
+            return "Введено больше одного операнда!";
+        }
         String[] strSplit = input.split("[+-/*]");
         a = romNum(strSplit[0]);
         b = romNum(strSplit[1].trim());
@@ -86,11 +90,11 @@ public class Calculator {
             result = 0;
         } else {
             result = math(a, b, op);
-            if (result < 0) {
+            if (result <= 0) {
                 try {
                     throw new Exception();
                 } catch (Exception e) {
-                    return "В римской системе нет отрицательных чисел!";
+                    return "В римской системе нет отрицательных чисел и ноля!";
                 }
             }
             if (a < 0 || b < 0) {
