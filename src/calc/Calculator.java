@@ -79,9 +79,9 @@ public class Calculator {
     }
     public static String calc() {
         stringProcessing();
-        int replaceAll = input.replaceAll("\\d", "").length();
+        int replaceAll = input.replaceAll("\\d|[a-zA-Z]", "").length();
         if (replaceAll > 1) {
-            return "Введено больше одного операнда!";
+            System.out.println("Введено больше одного операнда!");
         }
         String[] strSplit = input.split("[+-/*]");
         a = romNum(strSplit[0]);
